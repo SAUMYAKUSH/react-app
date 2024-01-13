@@ -17,7 +17,7 @@ const ExpenseForm = (props) => {
         setEnteredDate(event.target.value);
     };
     const submitHandler = (event) => {
-        event.prevenDefault();
+        event.preventDefault()
 
         const expenseData = {
             title: enteredTitle,

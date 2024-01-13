@@ -2,7 +2,7 @@ import Card from "../UI/card";
 import ExpensesFilter from "./ExpensesFilter";
 import "./Expenses.css";
 import { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
+import ExpensesList from "./ExpensesList";
 
 
 const Expenses = (props) => {
@@ -16,27 +16,17 @@ const Expenses = (props) => {
     
     return expenses.date.getFullYear().toString() === filteredYear; // agar ye true hota h to jo bhi filtered ya selected year select kiye usi year ke sare value filter hoke year wise filteredExpenses me store ho gye aur niche map function chala diye isi filtered year wise array ke liye taki jis year ka bhi ho wahi bs show ho
   });
- console.log(filteredExpenses)
- console.log(filteredYear)
+
+  
   return (
     <div>
     <Card className="expenses">
-        
-      {filteredExpenses.map((obj,index) => (
-        <ExpenseItem
-          title={obj.title}
-          amount={obj.amount}
-          date={obj.date}
-          key={index}
-          LocationOfExpenditure={obj.LocationOfExpenditure}
-        ></ExpenseItem>
-      ))}
 
       <ExpensesFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-       
+       <ExpensesList  items={filteredExpenses}/>
     </Card>
     </div>
   );
